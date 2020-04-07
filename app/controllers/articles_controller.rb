@@ -1,9 +1,13 @@
 class ArticlesController < ApplicationController
 
-    http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-    
+    http_basic_authenticate_with name: "123", password: "123", except: [:index, :show]
+
     def index
-        @articles = Article.all
+        @articles = if (params[:token])
+            Article.all.search(params[:token])
+        else  
+            Article.all
+        end
       end
 
     def show
