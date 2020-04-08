@@ -8,11 +8,23 @@
   <%= @article.text %>
 </p>
 
+<p>
+  <strong>Author:</strong>
+  <%= gravatar_for(@article.user)%>
+  <%= @article.user.name %>
+</p>
+
 <h2>Comments</h2>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+<% if logged_in? %>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+<% else %>
+  <h2>Please, log in to add your own comment<h2>
+<% end %>
 <%= link_to 'Back', articles_path %>
+

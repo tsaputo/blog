@@ -1,8 +1,8 @@
 class Article < ApplicationRecord
     has_many :comments, dependent: :destroy
-    validates :title, presence: true,
-                    length: { minimum: 5 }
+    belongs_to :user
+    validates :title, presence: true
+    validates :text, length: { minimum: 10 }
 
-    scope :search, -> (token) { where("title LIKE :token", token: "%#{token}%") }
-    
+    scope :search, -> (token) { where("title LIKE :token", token: "%#{token}%") }    
 end

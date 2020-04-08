@@ -1,28 +1,37 @@
 <h1>Listing articles</h1>
-<%= link_to 'New article', new_article_path %>
+  <% if logged_in? %>
+    <%= link_to 'New article', new_article_path %>
+  <% end %>
 
 <form action='' method='get'>
   <input type='text' name='token' placeholder='Search' value='<%=params[:token]%>'/>
   <button type='submit'>Search</button>
 </form>
 
-
 <table>
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Author</th>
     <th></th>
   </tr>
-
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <%= gravatar_for(article.user)%>
+        <%= article.user.name %>
+      </td>
+      <td>
+        <%= link_to 'Show', article_path(article) %>
+        <% if logged_in? %>
+            <%= link_to 'Edit', edit_article_path(article) %>
+            <%= link_to 'Destroy', article_path(article),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

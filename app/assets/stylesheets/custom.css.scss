@@ -77,3 +77,27 @@ h1, h2, h3, h4, h5, h6 {
       color: $state-danger-text;
     }
   }
+
+  table {
+    margin: 20px 50px;
+  }
+
+  td {
+    border: 1px solid grey;
+    padding: 10px;
+  }
+
+  #new_User {
+    margin: 50px 100px;
+  }
+
+  .alert {
+    position: absolute;
+    width: 500px;
+    height: 58px;
+    left: 33%;
+  }
+
+  img {
+    border-radius: 50%;
+  }

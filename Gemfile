@@ -22,8 +22,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.12'
 
-# Bootstrap
+# Bootstrap and JQuery
 gem 'bootstrap-sass', '3.3.7'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
