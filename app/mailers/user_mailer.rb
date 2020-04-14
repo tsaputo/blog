@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-  default from: "app167271827@heroku.com"
+   default from: "postmaster@sandboxa3e786773d9045a99c62bea6565cc1e9.mailgun.org"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
