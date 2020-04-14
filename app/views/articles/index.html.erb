@@ -8,17 +8,21 @@
   <button type='submit'>Search</button>
 </form>
 
+<%= will_paginate %>
+
 <table>
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Created</th>
     <th>Author</th>
     <th></th>
   </tr>
-  <% @articles.each do |article| %>
+  <% @articles.reverse.each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
+      <td><%= time_ago_in_words(article.updated_at)+' ago' %></td>
       <td>
         <%= gravatar_for(article.user)%>
         <%= article.user.name %>
@@ -35,3 +39,5 @@
     </tr>
   <% end %>
 </table>
+
+<%= will_paginate %>

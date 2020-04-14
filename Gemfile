@@ -23,6 +23,8 @@ gem 'bcrypt', '~> 3.1.12'
 # Bootstrap and JQuery
 gem 'bootstrap-sass', '3.3.7'
 gem 'jquery-rails'
+gem 'will_paginate', '3.1.8'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -1,12 +1,13 @@
 class ArticlesController < ApplicationController
 
     before_action :logged_in_user, only: [ :new, :edit, :create, :update, :destroy]
-
+ 
+    #переписать!
     def index
         @articles = if (params[:token])
-            Article.all.search(params[:token])
+            Article.search(params[:token]).paginate(page: params[:page])
         else  
-            Article.all
+            Article.paginate(page: params[:page])
         end
       end
 
@@ -23,8 +24,7 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        @article = current_user.articles.new(article_params)
-        
+        @article = current_user.articles.new(article_params)    
         if @article.save
             redirect_to @article
         else
