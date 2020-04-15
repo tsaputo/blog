@@ -1,18 +1,27 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div>
+<%= link_to 'Back', articles_path, class: "btn btn-primary" %>  
+</div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+<div class="article">
+  <p class="author">
+    <strong>Author:</strong>
+    <%= gravatar_for(@article.user)%>
+    <%= @article.user.name %>
+  </p>
+  <p>
+    <strong>Title:</strong>
+    <%= @article.title %>
+  </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= gravatar_for(@article.user)%>
-  <%= @article.user.name %>
-</p>
+  <p>
+    <strong>Text:</strong>
+    <%= @article.text %>
+  </p>
+
+    <% if logged_in? %>
+    <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary"%> 
+    <% end %>
+</div>
 
 
 <h2>Comments</h2>
@@ -28,8 +37,4 @@
     <h2>Please, log in to add your own comment<h2>
 <% end %>
 
-<% if logged_in? %>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-<% end %>
-<%= link_to 'Back', articles_path %>
 

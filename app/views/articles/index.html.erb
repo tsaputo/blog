@@ -9,9 +9,9 @@
 </form>
 
 <%= will_paginate %>
-<div class="container">
+<div class="main__container">
   <table>
-    <tr>
+    <tr class='row'>
       <th>Title</th>
       <th>Text</th>
       <th>Created</th>
@@ -19,22 +19,24 @@
       <th></th>
     </tr>
     <% @articles.reverse.each do |article| %>
-      <tr>
-        <td col-3><%= article.title %></td>
-        <td col-6><%= article.text %></td>
-        <td col-1><%= time_ago_in_words(article.created_at)+' ago' %></td>
-        <td col-2>
+      <tr class="row">
+        <td class="col-2"><%= article.title %></td>
+        <td class="col-7"><%= article.text %></td>
+        <td class="col-1"><%= time_ago_in_words(article.created_at)+' ago' %></td>
+        <td class="col-2">
           <%= gravatar_for(article.user)%>
           <%= article.user.name %>
         </td>
-        <td col-2>
-          <%= link_to 'Show', article_path(article) %>
+        <td class="col-2">
+        <div class="buttons-container">
+            <%= link_to 'Show', article_path(article) %>
           <% if logged_in? %>
               <%= link_to 'Edit', edit_article_path(article) %>
               <%= link_to 'Destroy', article_path(article),
                     method: :delete,
                     data: { confirm: 'Are you sure?' } %>
           <% end %>
+          </div>
         </td>
       </tr>
     <% end %>

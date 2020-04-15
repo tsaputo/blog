@@ -7,102 +7,130 @@ body {
   }
 
 h1, h2, h3, h4, h5, h6 {
-    line-height: 1;
-  }
-  
-  h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  h2 {
-    font-size: 1.2em;
-    letter-spacing: -1px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: normal;
-    color: #777;
-  }
-  
-  p {
-    font-size: 1.1em;
-    line-height: 1.7em;
-  }
+  line-height: 1;
+}
 
-  #logo {
-    float: left;
-    margin-right: 10px;
-    font-size: 1.7em;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    padding-top: 9px;
-    font-weight: bold;
-  }
-  
-  #logo:hover {
-    color: #fff;
-    text-decoration: none;
-  }
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
 
-  @mixin box_sizing {
-    -moz-box-sizing:    border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing:         border-box;
-  }
-  
-  input, textarea, select, .uneditable-input {
-    border: 1px solid #bbb;
-    width: 100%;
-    margin-bottom: 15px;
-    @include box_sizing;
-  }
-  
-  input {
-    height: auto !important;
-  }
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
 
-  #error_explanation {
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+ul {
+  list-style:none;
+}
+
+.article {
+  display: flex;
+  margin: 0 auto;
+  padding: 2%;
+  flex-direction: column;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.author img {
+  width: 50px;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+input, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+textarea {
+  width: 300px;
+  border: 1px solid #bbb;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
     color: red;
-    ul {
-      color: red;
-      margin: 0 0 30px 0;
-    }
+    margin: 0 0 30px 0;
   }
-  
-  .field_with_errors {
-    @extend .has-error;
-    .form-control {
-      color: $state-danger-text;
-    }
-  }
+}
 
-  table {
-    width: 100%;
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
   }
+}
 
-  td {
-    border: 1px solid grey;
-    padding: 10px;
-  }
+table {
+  width: 100%;
+}
 
-  #new_User {
-    margin: 50px 100px;
-  }
+td {
+  border: 1px solid grey;
+  padding: 20px;
+}
 
-  .alert {
-    position: absolute;
-    width: 500px;
-    height: 58px;
-    left: 33%;
-  }
+#new_User {
+  margin: 50px 100px;
+}
 
-  img {
-    border-radius: 50%;
-  }
+.alert {
+  position: absolute;
+  width: 500px;
+  height: 58px;
+  left: 33%;
+}
 
-  .btn {
-    width: 80px;
-  }
+img {
+  border-radius: 50%;
+}
+
+.btn {
+  width: 80px;
+}
