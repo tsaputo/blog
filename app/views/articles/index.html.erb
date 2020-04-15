@@ -9,35 +9,36 @@
 </form>
 
 <%= will_paginate %>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th>Created</th>
-    <th>Author</th>
-    <th></th>
-  </tr>
-  <% @articles.reverse.each do |article| %>
+<div class="container">
+  <table>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= time_ago_in_words(article.updated_at)+' ago' %></td>
-      <td>
-        <%= gravatar_for(article.user)%>
-        <%= article.user.name %>
-      </td>
-      <td>
-        <%= link_to 'Show', article_path(article) %>
-        <% if logged_in? %>
-            <%= link_to 'Edit', edit_article_path(article) %>
-            <%= link_to 'Destroy', article_path(article),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </td>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Created</th>
+      <th>Author</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+    <% @articles.reverse.each do |article| %>
+      <tr>
+        <td col-3><%= article.title %></td>
+        <td col-6><%= article.text %></td>
+        <td col-1><%= time_ago_in_words(article.created_at)+' ago' %></td>
+        <td col-2>
+          <%= gravatar_for(article.user)%>
+          <%= article.user.name %>
+        </td>
+        <td col-2>
+          <%= link_to 'Show', article_path(article) %>
+          <% if logged_in? %>
+              <%= link_to 'Edit', edit_article_path(article) %>
+              <%= link_to 'Destroy', article_path(article),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
 <%= will_paginate %>

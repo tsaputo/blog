@@ -7,12 +7,16 @@ class ArticlesController < ApplicationController
         @articles = if (params[:token])
             Article.search(params[:token]).paginate(page: params[:page])
         else  
-            Article.paginate(page: params[:page])
+            Article.all.order(created_at: :desc).paginate(page: params[:page])
         end
       end
 
     def show
         @article = Article.find(params[:id])
+        @comments = @article.comments.paginate(page: params[:page])
+        if (@comments.empty?)
+            @comments = @article.comments.paginate(page: @comments.total_pages)
+        end
     end
 
     def new

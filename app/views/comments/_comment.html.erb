@@ -1,24 +1,24 @@
 <li>
   <strong>Comment:</strong>
-  <%= comment.body %>
-  
-  <strong>Author:</strong>
-  <%= gravatar_for(comment.user)%>
-  <%= comment.user.name %>
+    <%= comment.body %>
+    
+    <strong>Author:</strong>
+    <%= gravatar_for(comment.user)%>
+    <%= comment.user.name %>
 
-  <% if logged_in? %>
-    <%= form_for [comment, Comment.new] do |f| %>
-        <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-        <%= f.submit "Reply", class: "btn btn-primary" %>
-    <% end %>
+    <% if logged_in? %>
+      <%= form_for [comment, Comment.new] do |f| %>
+          <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+          <%= f.submit "Reply", class: "btn btn-primary" %>
+      <% end %>
 
-    <% if comment.user === current_user%>
-      <p>
-        <%= link_to 'Destroy Comment', [comment],
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
-      </p>
-    <% end %>
+      <% if comment.user === current_user%>
+        <p>
+          <%= link_to 'Destroy Comment', [comment],
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+        </p>
+      <% end %>
 
     <ul>
         <%= render partial: 'comments/comment', collection: comment.comments %>

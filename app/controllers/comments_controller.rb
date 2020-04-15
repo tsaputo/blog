@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+
   def create
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user

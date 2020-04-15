@@ -16,8 +16,9 @@
 
 
 <h2>Comments</h2>
+  <%= will_paginate @comments%>
 <ul>
-  <%= render partial: 'comments/comment', collection: @article.comments %>
+  <%= render partial: 'comments/comment', collection: @comments %>
 </ul>
 
  <% if logged_in? %>
