@@ -2,13 +2,10 @@ class ArticlesController < ApplicationController
 
     before_action :logged_in_user, only: [ :new, :edit, :create, :update, :destroy]
  
-    #переписать!
     def index
-        @articles = if (params[:token])
-            Article.search(params[:token]).paginate(page: params[:page])
-        else  
-            Article.all.order(created_at: :desc).paginate(page: params[:page])
-        end
+        @articles = Article.all
+        @articles = Article.search(params[:token]) if (params[:token])
+        @articles = Article.includes(:user, comments :user).paginate(page: params[:page])
       end
 
     def show
@@ -48,8 +45,9 @@ class ArticlesController < ApplicationController
 
     def destroy
         @article = Article.find(params[:id])
-        @article.destroy
-      
+        if (@article.user === article.user)
+            @article.destroy 
+        end    
         redirect_to articles_path
     end
     

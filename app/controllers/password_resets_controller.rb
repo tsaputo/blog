@@ -40,13 +40,13 @@ class PasswordResetsController < ApplicationController
     params.require(:user).permit(:password, :password_confirmation)
   end
 
-  # Предфильтры
+  # Before filter
 
   def get_user
     @user = User.find_by(email: params[:email])
   end
 
-  # Проверяет срок действия reset-токена.
+  # Checl the expiration of reset-token.
   def check_expiration
     if @user.password_reset_expired?
       flash[:danger] = "Password reset has expired."
