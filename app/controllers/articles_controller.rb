@@ -5,8 +5,8 @@ class ArticlesController < ApplicationController
     def index
         @articles = Article.all
         @articles = Article.search(params[:token]) if (params[:token])
-        @articles = Article.includes(:user, comments :user).paginate(page: params[:page])
-      end
+        @articles = Article.includes(:user).paginate(page: params[:page])
+    end
 
     def show
         @article = Article.find(params[:id])
