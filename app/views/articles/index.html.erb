@@ -18,7 +18,7 @@
       <th>Author</th>
       <th></th>
     </tr>
-    <% @articles.reverse.each do |article| %>
+    <% @articles.each do |article| %>
       <tr class="row">
         <td class="col-2"><%= article.title %></td>
         <td class="col-7"><%= article.text %></td>
