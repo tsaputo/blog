@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
 
     before_action :logged_in_user, only: [ :new, :edit, :create, :update, :destroy]
+    before_action :load_article, only: [ :show, :edit, :update, :destroy]
+    before_action :check_article_owner, only: [ :edit, :update, :destroy]
+
  
     def index
         @articles = Article.all
@@ -9,7 +12,7 @@ class ArticlesController < ApplicationController
     end
 
     def show
-        @article = Article.find(params[:id])
+ #       @article = Article.find(params[:id])
         @comments = @article.comments.paginate(page: params[:page])
         if (@comments.empty?)
             @comments = @article.comments.paginate(page: @comments.total_pages)
@@ -21,7 +24,7 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-        @article = Article.find(params[:id])
+ #       @article = Article.find(params[:id])
     end
 
     def create
@@ -34,7 +37,7 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        @article = Article.find(params[:id])
+#        @article = Article.find(params[:id])
       
         if @article.update(article_params)
           redirect_to @article
@@ -43,10 +46,12 @@ class ArticlesController < ApplicationController
         end
     end
 
-    def destroy
-        @article = Article.find(params[:id])
-        if (@article.user === article.user)
-            @article.destroy 
+    def destroy       
+        #@article = Article.find(params[:id])
+        #binding.pry
+        if (@article.user_id == current_user.id)
+  
+            @article.destroy
         end    
         redirect_to articles_path
     end
@@ -55,4 +60,17 @@ class ArticlesController < ApplicationController
     def article_params
         params.require(:article).permit(:title, :text)
     end
+
+    def check_article_owner
+        # @article = Article.find(params[:id])
+        if (@article.user != current_user)
+            flash[:danger] = "You dont have permission to modify this article"   
+            redirect_to @article
+        end
+    end
+
+    def load_article
+        @article = Article.find(params[:id])
+    end
+
 end

@@ -52,6 +52,9 @@ class PasswordResetsController < ApplicationController
     puts "!!! User: name=#{@user.name}, reset_digest=#{@user.reset_digest}"
     puts "!!! Expired: #{@user.password_reset_expired?}"
     puts "!!! Hashed #{ User.digest(params[:id])}"
+
+    
+
     if @user.password_reset_expired? || !BCrypt::Password.new(@user.reset_digest).is_password?(params[:id])
       flash[:danger] = "Password reset has expired."
       redirect_to new_password_reset_url
