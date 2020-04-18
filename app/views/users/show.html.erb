@@ -1,7 +1,11 @@
 <% provide(:title, @user.name) %>
 <div id='new_User'>
     <h3>
-    <%= gravatar_for @user %>
+    <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar %>
+    <% else %>
+    <%= gravatar_for @user%>
+  <% end %>
     <%= @user.name %>
     </h3>
     <h3><%= @user.email %></h3>

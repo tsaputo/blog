@@ -1,5 +1,12 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: @user %>
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar %>
+  <% elsif @user.email %>
+    <%= gravatar_for @user%>
+  <% end %>
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>

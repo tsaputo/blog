@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_one_attached :avatar
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
   attr_accessor :reset_token

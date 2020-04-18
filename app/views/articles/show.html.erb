@@ -5,7 +5,14 @@
 <div class="article">
   <p class="author">
     <strong>Author:</strong>
+
+
+  <% if @article.user.avatar.attached? %>
+    <%= image_tag url_for(@article.user.avatar) %>
+      <%# <%= image_tag @article.user.avatar %> 
+  <% else %>
     <%= gravatar_for(@article.user)%>
+  <% end %>
     <%= @article.user.name %>
   </p>
   <p>

@@ -28,6 +28,9 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'jquery-rails'
 gem 'will_paginate', '3.1.8'
 
+# Client library for easily using the Cloudinary service
+gem 'cloudinary', '~> 1.13', '>= 1.13.2'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

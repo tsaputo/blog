@@ -24,7 +24,11 @@
         <td class="col-7"><%= article.text %></td>
         <td class="col-1"><%= time_ago_in_words(article.created_at)+' ago' %></td>
         <td class="col-2">
+        <% if article.user.avatar.attached? %>
+          <%= image_tag article.user.avatar %>
+        <% else %>
           <%= gravatar_for(article.user)%>
+        <% end %>
           <%= article.user.name %>
         </td>
         <td class="col-2">
