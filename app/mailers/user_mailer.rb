@@ -1,6 +1,7 @@
-class UserMailer < ApplicationMailer
+# frozen_string_literal: true
 
-   default from: "postmaster@sandboxa3e786773d9045a99c62bea6565cc1e9.mailgun.org"
+class UserMailer < ApplicationMailer
+  default from: 'postmaster@sandboxa3e786773d9045a99c62bea6565cc1e9.mailgun.org'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -9,6 +10,6 @@ class UserMailer < ApplicationMailer
   #
   def password_reset(user)
     @user = user
-    mail to: user.email, subject: "Password reset"
+    mail to: user.email, subject: 'Password reset'
   end
 end

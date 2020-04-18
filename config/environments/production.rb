@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -51,7 +53,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -70,13 +72,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: host }
   ## MailGun
   ActionMailer::Base.smtp_settings = {
-    :address => 'smtp.mailgun.org',
-    :port => '587',
-    :authentication => :plain,
-    :user_name => ENV['MAILGUN_USERNAME'],
-    :password => ENV['MAILGUN_PASSWORD'],
-    :domain => 'sandboxa3e786773d9045a99c62bea6565cc1e9.mailgun.org',
-    :enable_starttls_auto => true
+    address: 'smtp.mailgun.org',
+    port: '587',
+    authentication: :plain,
+    user_name: ENV['MAILGUN_USERNAME'],
+    password: ENV['MAILGUN_PASSWORD'],
+    domain: 'sandboxa3e786773d9045a99c62bea6565cc1e9.mailgun.org',
+    enable_starttls_auto: true
   }
   ## SendGrid
   # ActionMailer::Base.smtp_settings = {
@@ -103,7 +105,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
