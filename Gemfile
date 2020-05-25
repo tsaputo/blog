@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.12'
 
 # Bootstrap and JQuery
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'jquery-rails'
 gem 'will_paginate', '3.1.8'
